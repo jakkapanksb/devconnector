@@ -25,7 +25,7 @@ router.post("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
 
   // Check Validation
-  if (isValid) {
+  if (!isValid) {
     return res.status(400).json(errors);
   }
 
@@ -63,6 +63,7 @@ router.post("/register", (req, res) => {
       });
     }
   });
+  //.catch(err => res.status(400).json(err));
 });
 
 // @route   GET api/users/login
@@ -72,7 +73,7 @@ router.post("/login", (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
 
   // Check Validation
-  if (isValid) {
+  if (!isValid) {
     return res.status(400).json(errors);
   }
 
